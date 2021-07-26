@@ -33,7 +33,8 @@ The contents of the main file:
 `sns_topic` - Create an SNS Topic Endpoint for Lambda
 `lambda_func` - Create a Lambda Function, with an environment variable for Teams Webhook to POST to a channel of your choice.
 
-***A best-practice of using Terraform is not to put your access keys and secret in the configuration file. My recommendation is to use the configuration file to specify your credentials. The default location is "$HOME/.aws/credentials" on Linux and macOS or "%USERPROFILE%\.aws\credentials" on Windows. By setting the profile argument in the provider block, by default terraform will fetch this information from this configuration file with your credentials.***
+## Important
+>A best-practice of using Terraform is not to put your access keys and secret in the configuration file. My recommendation is to use the configuration file to specify your credentials. The default location is "$HOME/.aws/credentials" on Linux and macOS or "%USERPROFILE%\.aws\credentials" on Windows. By setting the profile argument in the provider block, by default terraform will fetch this information from this configuration file with your credentials.
 
 ## Usage
 Terraform Module EventBridge Rule: List with the names of guard rails detective.
@@ -130,6 +131,16 @@ module "lambda_func" {
   default_tags = local.default_tags
 }
 ```
+
+
+## Result
+For this example i created an IAM User without the MFA.
+
+### View the log.
+You should see a message similar to the following:
+
+>Notificação de Mudança de Conformidade na conta 12345678901 com o Config Rule CheckForIAMUserMFA na região de us-east-1. Para o recurso AWSIAMUser com o Id AXEDDTREBCTYREXYXYX, resultando em NON_COMPLIANT.
+
 
 ## Requirements
 | Name | Version |
