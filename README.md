@@ -1,5 +1,7 @@
 # Terraform AWS How to Detect a Guardrail Violation
 
+With provisioning an infrastructure with a multiple account environment, maintaining security and governance is a major challenge. In this template, I'll show you how you can detect and externalize compliance policy violation alerts to a channel in Microsoft Teams.
+
 ![alt text](img/DetectGuardrailViolation.png)
 
 This template has a terraform modules that provides the following resources:
@@ -24,14 +26,14 @@ terraform-aws-guardrail-violation$ tree
 
 ```
 ### Understanding the structure of the template
-`cloud-config.tf` - AWS credentials as well as setting the Terraform Backend S3.
-`main.tf` - file with the main settings for the stack set, detail below.
+- `cloud-config.tf` - AWS credentials as well as setting the Terraform Backend S3.
+- `main.tf` - file with the main settings for the stack set, detail below.
 
-The contents of the main file:
+#### The contents of the main file:
 - `data-sources` - At runtime, get the current account id and region.
 - `eventbridge_rule` - Creation of Rules, the event pattern that EventBrigde will receive, with the names of the configRules that will be monitored with the compliance policy.
-`sns_topic` - Create an SNS Topic Endpoint for Lambda
-`lambda_func` - Create a Lambda Function, with an environment variable for Teams Webhook to POST to a channel of your choice.
+- `sns_topic` - Create an SNS Topic Endpoint for Lambda
+- `lambda_func` - Create a Lambda Function, with an environment variable for Teams Webhook to POST to a channel of your choice.
 
 ## Important
 >A best-practice of using Terraform is not to put your access keys and secret in the configuration file. My recommendation is to use the configuration file to specify your credentials. The default location is "$HOME/.aws/credentials" on Linux and macOS or "%USERPROFILE%\.aws\credentials" on Windows. By setting the profile argument in the provider block, by default terraform will fetch this information from this configuration file with your credentials.
