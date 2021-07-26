@@ -136,7 +136,7 @@ module "lambda_func" {
 
 
 ## Result
-For this example i created an IAM User without the MFA.
+For this example, I created an IAM User without the MFA.
 
 ### View the log.
 You should see a message similar to the following:
