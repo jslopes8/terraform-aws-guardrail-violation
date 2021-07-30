@@ -141,7 +141,7 @@ For this example, I created an IAM User without the MFA.
 ### View the log.
 You should see a message similar to the following:
 
->Notificação de Mudança de Conformidade na conta 12345678901 com o Config Rule CheckForIAMUserMFA na região de us-east-1. Para o recurso AWSIAMUser com o Id AXEDDTREBCTYREXYXYX, resultando em NON_COMPLIANT.
+>Notificação de Mudança de Conformidade na conta 12345678901 com o Config Rule AWSControlTower_AWS-GR_IAM_USER_MFA_ENABLED na região de us-east-1. Para o recurso AWSIAMUser com o Id AXEDDTREBCTYREXYXYX, resultando em NON_COMPLIANT.
 
 
 ## Requirements
